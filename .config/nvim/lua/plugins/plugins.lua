@@ -138,18 +138,18 @@ local plugins = {
 		"akinsho/toggleterm.nvim",
 	},
 	-- rest.nvim
-	{
-		"vhyrro/luarocks.nvim",
-		priority = 1000,
-		config = true,
-	},
+	--[[ { ]]
+	--[[ 	"vhyrro/luarocks.nvim", ]]
+	--[[ 	priority = 1000, ]]
+	--[[ 	config = true, ]]
+	--[[ }, ]]
 	{
 		"rest-nvim/rest.nvim",
 		ft = "http",
 		dependencies = { "luarocks.nvim" },
-		--[[ config = function() ]]
-			--[[ require("rest-nvim").setup() ]]
-		--[[ end, ]]
+		config = function()
+			require("rest-nvim").setup()
+		end,
 	},
 	{
 		"nvim-lua/plenary.nvim",
@@ -164,6 +164,7 @@ local plugins = {
 		"David-Kunz/jester",
 		config = function()
 			require("jester").setup({
+				cmd = "jest --setupFiles=dotenv/config -t '$result' -- $file",
 				setopt = true,
 				dap = {
 					console = "externalTerminal",
@@ -191,10 +192,6 @@ local plugins = {
 	-- buffer delete without closing last buffer
 	{
 		"moll/vim-bbye",
-	},
-	-- null-ls
-	{
-		"jose-elias-alvarez/null-ls.nvim", -- for formatters and linte,
 	},
 	-- AutoSave.nvim
 	{
@@ -261,6 +258,8 @@ local plugins = {
 		"jamestthompson3/nvim-remote-containers",
 		cmd = { "AttachToContainer", "BuildImage", "StartImage", "ComposeUp", "ComposeDown", "ComponseDestroy" },
 	},
+	-- Install without configuration
+	{ "projekt0n/github-nvim-theme" },
 }
 
 return plugins

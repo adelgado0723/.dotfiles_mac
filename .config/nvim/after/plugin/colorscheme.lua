@@ -1,4 +1,5 @@
 vim.cmd([[colorscheme dracula]])
+-- vim.cmd([[colorscheme github_dark_high_contrast]])
 
 require("transparent").setup({
 	groups = { -- table: default groups

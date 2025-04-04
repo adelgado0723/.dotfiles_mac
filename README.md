@@ -20,7 +20,7 @@ My personal configuration files for various tools and applications. This reposit
 
 1. Clone this repository:
 ```bash
-git clone https://github.com/adelgado0723/dotfiles_mac.git ~/dotfiles
+git clone https://github.com/yourusername/dotfiles.git ~/dotfiles
 ```
 
 2. Create necessary directories:

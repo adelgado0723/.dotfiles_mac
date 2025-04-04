@@ -59,6 +59,7 @@ gls.left[2] = {
 --[[ 		highlight = { require("galaxyline.provider_fileinfo").get_file_icon_color, colors.darkblue }, ]]
 --[[ 	}, ]]
 --[[ } ]]
+--
 gls.left[4] = {
 	FileName = {
 		provider = { "FilePath", "FileSize" },

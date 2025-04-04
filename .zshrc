@@ -304,7 +304,7 @@ alias gc='gitCheckout' # workaround to override the git plugin's gc alias
 
 # BEGIN Work ############################
 
-alias stagingBE="ssh -i ~/.ssh/ssh_key user@example.com"
+alias stagingBE="ssh -i ~/.ssh/id_rsa user@example.com"
 alias mountStagingBE="sshfs user@example.com:/home/user [MOUNT_POINT]"
 
 function esNvim()

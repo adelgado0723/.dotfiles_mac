@@ -2,7 +2,7 @@ require("go").setup({
 	go = "go", -- go command, can be go[default] or go1.18beta1
 	goimports = "gopls", -- goimport command, can be gopls[default] or goimport
 	fillstruct = "gopls", -- can be nil (use fillstruct, slower) and gopls
-	gofmt = "gofmt", --gofmt cmd,
+	gofmt = "golines", --gofmt cmd,
 	max_line_len = 120, -- max line length in goline format
 	tag_transform = false, -- tag_transfer  check gomodifytags for details
 	test_template = "", -- g:go_nvim_tests_template  check gotests for details

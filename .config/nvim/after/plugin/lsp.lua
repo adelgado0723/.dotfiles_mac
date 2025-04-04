@@ -23,7 +23,6 @@ lsp.configure("lua_ls", {
 	},
 })
 
-
 local check_backspace = function()
 	local col = vim.fn.col(".") - 1
 	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
@@ -91,6 +90,10 @@ require("mason-lspconfig").setup({
 	handlers = {
 		lsp.default_setup,
 	},
+})
+
+lsp.configure("eslint", {
+	filetypes = { "typescriptreact", "javascriptreact", "typescript", "javascript", "typescript.tsx", "javascript.jsx" },
 })
 
 lsp.configure("emmet_ls", {
