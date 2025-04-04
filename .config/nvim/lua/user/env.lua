@@ -1,0 +1,1 @@
+vim.fn.setenv("ENV", "dev")

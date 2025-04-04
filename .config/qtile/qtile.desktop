@@ -1,0 +1,7 @@
+# Needs to go in /usr/share/xsessions
+[Desktop Entry]
+Name=Qtile
+Comment=Python Based Windown Manager
+Exec=qtile start
+Type=Application
+Keywords=tiling;wm;windowmanager;desktop;session

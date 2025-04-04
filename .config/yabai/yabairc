@@ -1,0 +1,58 @@
+# # for this to work you must configure sudo such that
+# it will be able to run the command without password
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
+# default layout (can be bsp, stack or float)
+yabai -m config layout bsp
+
+# yabai -m rule --add app="^System Settings$" manage=off
+# yabai -m rule --add app="^Calculator$" manage=off
+# yabai -m rule --add app="^Karabiner-Elements$" manage=off
+
+# sketchybar events (.yabairc)
+yabai -m signal --add event=window_focused action="sketchybar -m --trigger window_focus &> /dev/null"
+yabai -m signal -add event=window_minimized action="sketchybar -m --trigger window_focus &> /dev/null"
+yabai -m signal --add event=window_title_changed action="sketchybar -m --trigger title_change &> /dev/null"
+
+
+ yabai -m config window_border              on           \
+                 mouse_follows_focus        off          \
+                 focus_follows_mouse        autoraise    \
+                 window_zoom_persist        off          \
+                 window_placement           second_child \
+                 window_topmost             off          \
+                 window_shadow              float        \
+                 window_opacity             off          \
+                 window_opacity_duration    0.0          \
+                 active_window_opacity      1.0          \
+                 normal_window_opacity      0.0          \
+                 window_border_width        2            \
+                 window_border_hidpi        off          \
+                 window_border_radius       6            \
+                 window_border_blur         off          \
+                 active_window_border_color 0x50FA7BFF   \
+                 normal_window_border_color 0x282A3664   \
+                 insert_feedback_color      0xFFB86C74   \
+                 split_ratio                0.50         \
+                 auto_balance               off          \
+                 mouse_modifier             cmd          \
+                 mouse_action1              move         \
+                 mouse_action2              resize       \
+                 mouse_drop_action          swap         \
+                 top_padding                2            \
+                 bottom_padding             30           \
+                 left_padding               4            \
+                 right_padding              4            \
+                 window_gap                 3
+                 window_animation          none         \
+                 window_animation_duration  0            \
+
+
+# Exclude problematic apps from being managed:
+# yabai -m rule --add app="^(LuLu|Calculator|Software Update|Dictionary|VLC|System Preferences|System Settings|zoom.us|Photo Booth|Archive Utility|Python|LibreOffice|App Store|Steam|Alfred|Activity Monitor)$" manage=off
+# yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
+# yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
+# yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
+yabai -m rule --add label="Select file to save to" app="^Inkscape$" title="Select file to save to" manage=off
+

@@ -1,0 +1,91 @@
+general {
+  colors = true
+  interval = 1
+  separator = ""
+  output_format = "i3bar"
+  colors = true
+  color_good = "#50FA7B"
+  color_degraded = "#F1FA8C"
+  color_bad = "#FF5555"
+}
+
+/* order += "ipv6" */
+/* order += "run_watch DHCP" */
+/* order += "run_watch VPNC" */
+/* order += "path_exists VPN" */
+order += "wireless wlp0s20f3"
+order += "ethernet enx8cae4cf1be9f"
+/* order += "battery 0" */
+order += "cpu_temperature 0"
+order += "cpu_usage"
+order += "memory"
+/* order += "load" */
+order += "disk /"
+order += "tztime local"
+
+wireless wlp0s20f3 {
+        format_up = "   %quality at %essid, %bitrate "
+        format_down = " down"
+}
+
+ethernet enx8cae4cf1be9f {
+        format_up = "   %speed "
+        format_down = " down"
+}
+
+battery 0 {
+        format = "%status %percentage %remaining %emptytime"
+        format_down = "No battery"
+        status_chr = "⚡ CHR"
+        status_bat = "🔋 BAT"
+        status_unk = "? UNK"
+        status_full = "☻ FULL"
+        path = "/sys/class/power_supply/BAT%d/uevent"
+        low_threshold = 10
+}
+
+/* run_watch DHCP { */
+/*         pidfile = "/var/run/dhclient*.pid" */
+/* } */
+
+/* run_watch VPNC { */
+        # file containing the PID of a vpnc process
+        /* pidfile = "/var/run/vpnc/pid" */
+/* } */
+
+/* path_exists VPN { */
+/*         # path exists when a VPN tunnel launched by nmcli/nm-applet is active */
+/*         path = "/proc/sys/net/ipv4/conf/tun0" */
+/* } */
+
+tztime local {
+        format = "   %m-%d %H:%M "
+}
+
+load {
+        format = " LOAD %5min "
+}
+
+cpu_temperature 0 {
+        format = "  %degrees °C "
+        path = "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp1_input"
+}
+
+cpu_usage {
+  format = "   %usage "
+
+}
+
+memory {
+        format = "   %used "
+        threshold_degraded = "10%"
+        format_degraded = "   %free "
+}
+
+disk "/" {
+        format = "   %avail / %total "
+}
+
+read_file uptime {
+        path = "/proc/uptime"
+}
