@@ -4,7 +4,7 @@ My personal configuration files for various tools and applications. This reposit
 
 - Shell configuration (zsh)
 - Neovim configuration
-- Window manager configurations (i3, qtile)
+- Window manager configurations (yabai)
 - Various application configurations
 - Development environment setup
 
@@ -12,7 +12,7 @@ My personal configuration files for various tools and applications. This reposit
 
 - Neovim setup with LSP support, debugging, and various plugins
 - Zsh configuration with oh-my-zsh and custom plugins
-- Window manager configurations for both i3 and qtile
+- Window manager configurations for both i3, qtile, and yabai
 - Various development tools and utilities
 - Custom scripts and aliases for productivity
 
@@ -20,7 +20,7 @@ My personal configuration files for various tools and applications. This reposit
 
 1. Clone this repository:
 ```bash
-git clone https://github.com/yourusername/dotfiles.git ~/dotfiles
+git clone https://github.com/adelgado0723/dotfiles_mac.git ~/dotfiles
 ```
 
 2. Create necessary directories:
