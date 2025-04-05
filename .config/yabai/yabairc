@@ -1,7 +1,7 @@
 # # for this to work you must configure sudo such that
 # it will be able to run the command without password
-yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
-sudo yabai --load-sa
+# yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+# sudo yabai --load-sa
 
 # default layout (can be bsp, stack or float)
 yabai -m config layout bsp
@@ -29,8 +29,9 @@ yabai -m signal --add event=window_title_changed action="sketchybar -m --trigger
                  normal_window_opacity      0.0          \
                  window_border_width        2            \
                  window_border_hidpi        off          \
-                 window_border_radius       6            \
+                 window_border_radius       6           \
                  window_border_blur         off          \
+                 window_animation_duration  0.3          \
                  active_window_border_color 0x50FA7BFF   \
                  normal_window_border_color 0x282A3664   \
                  insert_feedback_color      0xFFB86C74   \
@@ -45,8 +46,6 @@ yabai -m signal --add event=window_title_changed action="sketchybar -m --trigger
                  left_padding               4            \
                  right_padding              4            \
                  window_gap                 3
-                 window_animation          none         \
-                 window_animation_duration  0            \
 
 
 # Exclude problematic apps from being managed:

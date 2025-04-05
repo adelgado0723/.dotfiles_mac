@@ -48,7 +48,7 @@ do
                               associated_display=1 \
                               background.padding_left=1 \
                               background.padding_right=1 \
-                              click_script="yabai -m space --focus $sid" \
+                              click_script="skhd -k \"cmd - $sid\" "\
              --subscribe space.$sid front_app_switched
 done
 
