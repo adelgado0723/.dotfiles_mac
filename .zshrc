@@ -236,38 +236,37 @@ alias notes="cd $HOME/notes/"
 alias enotes="nvim $HOME/notes/"
 
 # Function to open a note file using fzf/gum
-function open_note() {
-    # Ensure notes directory exists
-    if [[ ! -d "$NOTES_DIR" ]]; then
-        echo "Notes directory not found: $NOTES_DIR"
-        return 1
-    }
-
-    # Find all files in notes directory and its subdirectories
-    local selected_file
-    selected_file=$(find -L "$NOTES_DIR" -type f | \
-        # Remove the base notes directory path for cleaner display
-        sed "s|^$NOTES_DIR/||" | \
-        # Use gum to select a file
-        gum filter --placeholder "Select a note to open...")
-
-    # If no file was selected (user pressed ESC or empty result), exit
-    if [[ -z "$selected_file" ]]; then
-        return 0
-    fi
-
-    # Construct the full path to the selected file
-    local full_path="$NOTES_DIR/$selected_file"
-
-    # Verify the file exists before opening
-    if [[ ! -f "$full_path" ]]; then
-        echo "Error: File not found: $full_path"
-        return 1
-    fi
-
-    # Open the file in nvim
-    nvim "$full_path"
-}
+# function open_note() {
+#     # Ensure notes directory exists
+#     if [[ ! -d "$NOTES_DIR" ]]; then
+#         echo "Notes directory not found: $NOTES_DIR"
+#         return 1
+#     }
+# 
+#     # Find all files in notes directory and its subdirectories
+#     selected_file=$(find -L "$NOTES_DIR" -type f | \
+#         # Remove the base notes directory path for cleaner display
+#         sed "s|^$NOTES_DIR/||" | \
+#         # Use gum to select a file
+#         gum filter --placeholder "Select a note to open...")
+# 
+#     # If no file was selected (user pressed ESC or empty result), exit
+#     if [[ -z "$selected_file" ]]; then
+#         return 0
+#     fi
+# 
+#     # Construct the full path to the selected file
+#     local full_path="$NOTES_DIR/$selected_file"
+# 
+#     # Verify the file exists before opening
+#     if [[ ! -f "$full_path" ]]; then
+#         echo "Error: File not found: $full_path"
+#         return 1
+#     fi
+# 
+#     # Open the file in nvim
+#     nvim "$full_path"
+# }
 
 # Alias for the function
 alias onotes='open_note'
@@ -479,6 +478,11 @@ bindkey -s ^ag "tmux neww lazygit\n"
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init --path)"
+  eval "$(pyenv init -)"
+fi
+
 export PIP_BIN="/opt/homebrew/lib/python3.11/site-packages"
 export PATH="$PIP_BIN:$PATH"
 alias python='python3.11'
@@ -489,21 +493,6 @@ alias pip='pip3.11'
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init --path)"
   eval "$(pyenv init -)"
-fi
-
-### Start x server
-if [[ "$(tty)" == "/dev/tty1" ]]; then
-    pgrep qtile || startx ~/.xinitrc # start x server -> starts qtile
-elif [[ $HOST == "kw-workstation" || $HOST == "kw-workstation.local" ]]; then
-  # export LSCOLORS=GxFxCxDxBxegedabagaced
-  # export CLICOLOR=1
-  # export TERM='xterm-256color'
-  # export LESSCHARSET=utf-8
-  export PAGER=less
-else 
-    # fortune | cowsay -f dracula
-    # figlet -f lean DRACULA -c | tr ' _/' ' #' && fortune 
-    key-config
 fi
 
 # Activate zsh completions
@@ -560,3 +549,8 @@ export CPPFLAGS="-I/opt/homebrew/opt/openjdk@11/include"
 
 ## end
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+export PATH=/opt/homebrew/bin:$PATH
+export NVM_DIR="$HOME/.nvm"
+[ -s "$(brew --prefix nvm)/nvm.sh" ] && \. "$(brew --prefix nvm)/nvm.sh"
+[ -s "$(brew --prefix nvm)/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix nvm)/etc/bash_completion.d/nvm"
+export NODE_OPTIONS="--no-experimental-fetch"
