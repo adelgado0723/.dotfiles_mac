@@ -3,6 +3,7 @@ require("user.lazy")
 require("user.env")
 require("user.keymaps")
 require("user.autocmds")
+require("user.requery")
 require("user.options")
 
 if vim.g.vscode then
