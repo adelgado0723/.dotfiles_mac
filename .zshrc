@@ -107,6 +107,9 @@ export LANG=en_US.UTF-8
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 
+# add kotlin lsp to path
+export PATH=~/kotlin-language-server/server/build/install/server/bin/:$PATH
+
 export NODE_OPTIONS=--max-old-space-size=4096
 
 export GOPATH=$HOME/go
@@ -304,7 +307,7 @@ alias gc='gitCheckout' # workaround to override the git plugin's gc alias
 # BEGIN Work ############################
 
 alias stagingBE="ssh -i ~/.ssh/id_rsa user@example.com"
-alias mountStagingBE="sshfs user@example.com:/home/user [MOUNT_POINT]"
+alias mountStagingBE="sshfs user@example.com:~ [MOUNT_POINT]"
 
 function esNvim()
 {

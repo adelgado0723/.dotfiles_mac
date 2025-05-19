@@ -86,6 +86,8 @@ require("mason-lspconfig").setup({
 		"sqlls",
 		"tailwindcss",
 		"tsserver",
+		-- Kotlin language server
+		"kotlin_language_server",
 	},
 	handlers = {
 		lsp.default_setup,
